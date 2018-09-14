@@ -1,0 +1,22 @@
+---- usRcvFront Æ¥Åä (24 ÔÚ 2 ÎÄ¼þ ) ----
+Serial.c (e:\project\new_genie20180523\5_wrda20180522\wrda\module\source\app):        UINT16 usSpace = Serial[ucPort].usRcvRear == Serial[ucPort].usRcvFront ? SERIAL_MAX_RECV_BUFF_LENGTH : ((SERIAL_MAX_RECV_BUFF_LENGTH + Serial[ucPort].usRcvRear - Serial[ucPort].usRcvFront) % SERIAL_MAX_RECV_BUFF_LENGTH);
+Serial.c (e:\project\new_genie20180523\5_wrda20180522\wrda\module\source\app):        if (Serial[ucPort].usRcvFront >= Serial[ucPort].usRcvRear)
+Serial.c (e:\project\new_genie20180523\5_wrda20180522\wrda\module\source\app):           if (usLength < SERIAL_MAX_RECV_BUFF_LENGTH - Serial[ucPort].usRcvFront) 
+Serial.c (e:\project\new_genie20180523\5_wrda20180522\wrda\module\source\app):                memcpy(&Serial[ucPort].RcvBuff[Serial[ucPort].usRcvFront],pData,usLength);
+Serial.c (e:\project\new_genie20180523\5_wrda20180522\wrda\module\source\app):                Serial[ucPort].usRcvFront += usLength;
+Serial.c (e:\project\new_genie20180523\5_wrda20180522\wrda\module\source\app):               memcpy(&Serial[ucPort].RcvBuff[Serial[ucPort].usRcvFront],pData,SERIAL_MAX_RECV_BUFF_LENGTH - Serial[ucPort].usRcvFront);
+Serial.c (e:\project\new_genie20180523\5_wrda20180522\wrda\module\source\app):               pData += (SERIAL_MAX_RECV_BUFF_LENGTH - Serial[ucPort].usRcvFront);
+Serial.c (e:\project\new_genie20180523\5_wrda20180522\wrda\module\source\app):               usLength -= (SERIAL_MAX_RECV_BUFF_LENGTH - Serial[ucPort].usRcvFront);
+Serial.c (e:\project\new_genie20180523\5_wrda20180522\wrda\module\source\app):               Serial[ucPort].usRcvFront = usLength;
+Serial.c (e:\project\new_genie20180523\5_wrda20180522\wrda\module\source\app):            memcpy(&Serial[ucPort].RcvBuff[Serial[ucPort].usRcvFront],pData,usLength);
+Serial.c (e:\project\new_genie20180523\5_wrda20180522\wrda\module\source\app):            Serial[ucPort].usRcvFront += usLength;
+Serial.c (e:\project\new_genie20180523\5_wrda20180522\wrda\module\source\app):        usSpace = Serial[ucPort].usRcvRear == Serial[ucPort].usRcvFront ? SERIAL_MAX_RECV_BUFF_LENGTH : (SERIAL_MAX_RECV_BUFF_LENGTH + Serial[ucPort].usRcvRear - Serial[ucPort].usRcvFront) % SERIAL_MAX_RECV_BUFF_LENGTH;
+Serial.c (e:\project\new_genie20180523\5_wrda20180522\wrda\module\source\app):    UINT16 usDist = (SERIAL_MAX_RECV_BUFF_LENGTH - Serial[ucPort].usRcvRear + Serial[ucPort].usRcvFront) % SERIAL_MAX_RECV_BUFF_LENGTH;
+Serial.c (e:\project\new_genie20180523\5_wrda20180522\wrda\module\source\app):        if (Serial[ucPort].usRcvRear < Serial[ucPort].usRcvFront)
+Serial.c (e:\project\new_genie20180523\5_wrda20180522\wrda\module\source\app):        if (Serial[ucPort].usRcvRear == Serial[ucPort].usRcvFront)
+Serial.c (e:\project\new_genie20180523\5_wrda20180522\wrda\module\source\app):            Serial[ucPort].usRcvRear = Serial[ucPort].usRcvFront = 0;
+Serial.c (e:\project\new_genie20180523\5_wrda20180522\wrda\module\source\app):    if (Serial[ucPort].usRcvRear == Serial[ucPort].usRcvFront)
+Serial.c (e:\project\new_genie20180523\5_wrda20180522\wrda\module\source\app):        UINT16 usDist = (SERIAL_MAX_RECV_BUFF_LENGTH - Serial[ucPort].usRcvRear + Serial[ucPort].usRcvFront) % SERIAL_MAX_RECV_BUFF_LENGTH;
+Serial.c (e:\project\new_genie20180523\5_wrda20180522\wrda\module\source\app):    return (Serial[ucPort].usRcvRear == Serial[ucPort].usRcvFront);
+Serial.c (e:\project\new_genie20180523\5_wrda20180522\wrda\module\source\app):    Serial[ucPort].usRcvFront   = 0;
+Serial.h (e:\project\new_genie20180523\5_wrda20180522\wrda\module\source\app):    UINT16 usRcvFront,usRcvRear;
