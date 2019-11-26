@@ -117,6 +117,28 @@ void SerialEnableTx(UINT8 ucPort,UINT8 ucEnable)
     {
         stm32_gpio_set_value(Serial[ucPort].ucPortCtrl,0); // ylf:  output low
     }
+
+    Serial[ucPort].ucRs485State     = ucEnable;
+    Serial[ucPort].ulRs485StartTick = OSTimeGet();
+}
+
+void SerialTxCheck(UINT8 ucPort,uint32_t ulDuration)
+{
+    if (RS485 != Serial[ucPort].ucPortType)
+    {
+        return;
+    }
+
+    if (!Serial[ucPort].ucRs485State)
+    {
+        return;
+    }
+
+    if (OSTimeGet() - Serial[ucPort].ulRs485StartTick >= ulDuration)
+    {
+       /* reset */
+       SerialEnableTx(ucPort,FALSE);
+    }
 }
 
 
@@ -145,34 +167,42 @@ UINT8  Serial_FillSndBuf(UINT8 ucPort ,UINT8 *pData,UINT16 usLength)
     {
         return FALSE;
     }
-
-    SerialEnableTx(ucPort,TRUE);
-
-    if (Serial[ucPort].usSndFront >= Serial[ucPort].usSndRear)
+    
+    if (usLength > 0)
     {
-       if (usLength < SERIAL_MAX_SEND_BUFF_LENGTH - Serial[ucPort].usSndFront) 
-       {
+#if OS_CRITICAL_METHOD == 3    /* Allocate storage for CPU status register */
+        OS_CPU_SR     cpu_sr = 0;
+#endif    
+        SerialEnableTx(ucPort,TRUE);
+
+        OS_ENTER_CRITICAL();
+    
+        if (Serial[ucPort].usSndFront >= Serial[ucPort].usSndRear)
+        {
+           if (usLength < SERIAL_MAX_SEND_BUFF_LENGTH - Serial[ucPort].usSndFront) 
+           {
+                memcpy(&Serial[ucPort].SndBuff[Serial[ucPort].usSndFront],pData,usLength);
+                Serial[ucPort].usSndFront += usLength;
+           }
+           else
+           {
+               memcpy(&Serial[ucPort].SndBuff[Serial[ucPort].usSndFront],pData,SERIAL_MAX_SEND_BUFF_LENGTH - Serial[ucPort].usSndFront);
+               pData += (SERIAL_MAX_SEND_BUFF_LENGTH - Serial[ucPort].usSndFront);
+               usLength -= (SERIAL_MAX_SEND_BUFF_LENGTH - Serial[ucPort].usSndFront);
+               memcpy(&Serial[ucPort].SndBuff[0],pData,usLength);
+               Serial[ucPort].usSndFront = usLength;
+           }
+        }
+        else
+        {
             memcpy(&Serial[ucPort].SndBuff[Serial[ucPort].usSndFront],pData,usLength);
             Serial[ucPort].usSndFront += usLength;
-       }
-       else
-       {
-           memcpy(&Serial[ucPort].SndBuff[Serial[ucPort].usSndFront],pData,SERIAL_MAX_SEND_BUFF_LENGTH - Serial[ucPort].usSndFront);
-           pData += (SERIAL_MAX_SEND_BUFF_LENGTH - Serial[ucPort].usSndFront);
-           usLength -= (SERIAL_MAX_SEND_BUFF_LENGTH - Serial[ucPort].usSndFront);
-           memcpy(&Serial[ucPort].SndBuff[0],pData,usLength);
-           Serial[ucPort].usSndFront = usLength;
-       }
+        }
+        
+        OS_EXIT_CRITICAL();
+        
+        USART_ITConfig(Serial[ucPort].UsartDef, USART_IT_TXE, ENABLE);
     }
-    else
-    {
-        memcpy(&Serial[ucPort].SndBuff[Serial[ucPort].usSndFront],pData,usLength);
-        Serial[ucPort].usSndFront += usLength;
-    }
-
-    
-    USART_ITConfig(Serial[ucPort].UsartDef, USART_IT_TXE, ENABLE);
-
     return TRUE;
 }
 

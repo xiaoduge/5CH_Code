@@ -3,4 +3,6 @@
 
 void ModbusInit(void);
 
+void ModbusSecondTask(void);
+
 #endif

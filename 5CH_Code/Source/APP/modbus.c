@@ -1,7 +1,6 @@
-#include    <ucos_ii.h>
-
-#include    <string.h>
-#include    <stdio.h>
+#include <ucos_ii.h>
+#include <string.h>
+#include <stdio.h>
 
 #include "stm32f10x.h"
 
@@ -32,6 +31,8 @@
 #include "Display.h"
 
 #include "adc.h"
+
+#include "math.h"
 
 #define MAX_TADC_VALUE (0XFFF << ADC_Additional_Bits)
 #define RREF_RESISTENCE (10000)
@@ -173,7 +174,10 @@ unsigned char RD_mode;
 #define OR2CAL 64                      
 #define OR3CAL 65                      
 #define OR4CAL 66                      
-#define OR5CAL 67     
+#define OR5CAL 67    
+
+//#define B3950
+
 
 #define SAFE
 const float maxG25 = 18.2;
@@ -409,6 +413,30 @@ uint16_t get_trx(int Rx)
   }
   return (tx = 1001);
 }
+
+//old PURIST A+ T Calc
+int ex_get_tx(int ADx,uint16_t RTRef)
+{
+	uint32_t Rtx;
+    double tmp;
+    int tx;
+    Rtx = (long)ADx*RTRef/(MAX_TADC_VALUE-ADx);  
+    if(Rtx > 32650)    tmp = 0;    /* ylf: minus 100 celsius */
+    else if(Rtx < 679) tmp = 100;  /* ylf: 100 celsius */
+	else
+	{
+#ifdef B3950
+		tmp = 3950 / ((3950/298.15) + log(Rtx) - log(10000)) - 273.15; //T Calc
+#else
+		tmp = 3984 / ((3984/298.15) + log(Rtx) - log(10000)) - 273.15; //T Calc
+#endif
+	}
+	
+    tx=(int)(tmp*10);
+	
+    return(tx);
+}
+
 
 int get_tx(int ADx,uint16_t RTRef)
 {
@@ -1551,7 +1579,9 @@ void ch1_meas_proc()
     uint16_t Rx;
     t1addat=ad_mean(T1_ch); /* ylf: internal adc (from calibrating procedure ch1HL > ch1HH )*/
     c1addat=get_c1addat();  /* ylf: external adc */
+    // tx1= ex_get_tx(t1addat,RT1Ref) + t1offset;
     tx1=get_tx(t1addat,RT1Ref)+t1offset; /* ylf: tx1 is one member of ch1_data_addr */
+    
     if(ch1_Range_flg)
     {
         Rx=getRx_proc(c1addat,ch1HH,ch1HVR); /* satisfy : ch1HH(100) < ch1HL < ch1HVR */
@@ -1637,6 +1667,7 @@ void ch2_meas_proc()
     uint16_t Rx;
     t2addat=ad_mean(T2_ch);
     c2addat=get_c2addat();  
+    // tx2= ex_get_tx(t2addat,RT2Ref) + t2offset;
     tx2=get_tx(t2addat,RT2Ref)+t2offset;        
 
     if(ch2_Range_flg)                                                   
@@ -1716,7 +1747,8 @@ void ch3_meas_proc()
     uint16_t Rx;
     t3addat=ad_mean(T3_ch);
     c3addat=get_c3addat();
-    tx3=get_tx(t3addat,RT3Ref)+t3offset;
+    tx3= ex_get_tx(t3addat,RT3Ref) + t3offset;
+    //tx3=get_tx(t3addat,RT3Ref)+t3offset;
     get_Kcoef_Kp(((float)tx3)/10);
 
     if(ch3_Range_flg)
@@ -1804,7 +1836,8 @@ void ch4_meas_proc()
     uint16_t Rx;
     t4addat=ad_mean(T4_ch);
     c4addat=get_c4addat();
-    tx4=get_tx(t4addat,RT4Ref)+t4offset;
+    tx4= ex_get_tx(t4addat,RT4Ref) + t4offset;
+    //tx4=get_tx(t4addat,RT4Ref)+t4offset;
     get_Kcoef_Kp((float)tx4/10);
     if(ch4_Range_flg)
     {
@@ -1891,7 +1924,8 @@ void ch5_meas_proc()
     uint16_t Rx;
     t5addat=ad_mean(T5_ch);
     c5addat=get_c5addat();
-    tx5=get_tx(t5addat,RT5Ref)+t5offset;
+    tx5= ex_get_tx(t5addat,RT5Ref) + t5offset;
+    //tx5=get_tx(t5addat,RT5Ref)+t5offset;
     get_Kcoef_Kp((float)tx5/10);
     if(ch5_Range_flg)
     {
@@ -1943,7 +1977,8 @@ void ch1_debug_proc()
     
     t1addat=ad_mean(T1_ch); 
     c1addat=get_c1addat();  
-    tx1_dbg=get_tx(t1addat,RT1Ref)+t1offset; 
+    tx1_dbg= ex_get_tx(t1addat,RT1Ref) + t1offset;
+    //tx1_dbg=get_tx(t1addat,RT1Ref)+t1offset; 
     vx1_dbg=c1addat;
     
     if(debug_range_flg)
@@ -1977,8 +2012,8 @@ void ch2_debug_proc()
     
     t2addat=ad_mean(T2_ch);
     c2addat=get_c2addat(); 
-    
-    tx2_dbg=get_tx(t2addat,RT2Ref)+t2offset;        
+    tx2_dbg= ex_get_tx(t2addat,RT2Ref) + t2offset;
+    //tx2_dbg=get_tx(t2addat,RT2Ref)+t2offset;        
     vx2_dbg=c2addat;
 
     if(debug_range_flg)                                                   
@@ -2009,7 +2044,8 @@ void ch3_debug_proc()
     uint16_t Rx;
     t3addat=ad_mean(T3_ch);
     c3addat=get_c3addat();
-    tx3_dbg=get_tx(t3addat,RT3Ref)+t3offset;
+    tx3_dbg= ex_get_tx(t3addat,RT3Ref) + t3offset;
+   // tx3_dbg=get_tx(t3addat,RT3Ref)+t3offset;
     get_Kcoef_Kp(((float)tx3_dbg)/10);
     vx3_dbg=c3addat;
 
@@ -2041,7 +2077,8 @@ void ch4_debug_proc()
     uint16_t Rx;
     t4addat=ad_mean(T4_ch);
     c4addat=get_c4addat();
-    tx4_dbg=get_tx(t4addat,RT4Ref)+t4offset;
+    tx4_dbg= ex_get_tx(t4addat,RT4Ref) + t4offset;
+    //tx4_dbg=get_tx(t4addat,RT4Ref)+t4offset;
     get_Kcoef_Kp(((float)tx4_dbg)/10);
     vx4_dbg=c4addat;
 
@@ -2073,7 +2110,8 @@ void ch5_debug_proc()
     uint16_t Rx;
     t5addat=ad_mean(T4_ch);
     c5addat=get_c5addat();
-    tx5_dbg=get_tx(t5addat,RT5Ref)+t5offset;
+    tx5_dbg= ex_get_tx(t5addat,RT5Ref) + t5offset;
+    //tx5_dbg=get_tx(t5addat,RT5Ref)+t5offset;
     get_Kcoef_Kp(((float)tx5_dbg)/10);
     vx5_dbg=c5addat;
 
@@ -2738,6 +2776,10 @@ void modbus_msg_Handler(Message *Msg)
     }
 }
 
+void ModbusSecondTask(void)
+{
+    SerialTxCheck(SERIAL_PORT1,3000);
+}
 
 void ModbusInit(void)
 {
@@ -2752,16 +2794,17 @@ void ModbusInit(void)
    IAP_CONTR = 0;
    ES = 0;
 
-//#if 0
+#if 0
 	//20180522修改，解决10倍错误问题1--->0
    ch1_Range_flg=0;
    ch2_Range_flg=0;
    ch3_Range_flg=0;
    ch4_Range_flg=0;
    ch5_Range_flg=0;
-//#endif
+#endif
 	//
-#if 0
+	
+    
    ch1_Range_flg=1;
    ch2_Range_flg=1;
    ch3_Range_flg=1;
@@ -2773,7 +2816,7 @@ void ModbusInit(void)
    RelayLogicCtrl(RELAY_CONDUCTIVE_SAMPLE_SEL3,1);
    RelayLogicCtrl(RELAY_CONDUCTIVE_SAMPLE_SEL2,1);
    RelayLogicCtrl(RELAY_CONDUCTIVE_SAMPLE_SEL1,1);
-#endif
+
    //end
    if (ERROR_SUCCESS != Config_GetItem(STM32_NV_APP_PARAM_AREA,dat_len,Start_addr_R))
    {
@@ -2790,6 +2833,58 @@ void ModbusInit(void)
    
        SerialInitPort(ucPortIdx);   
    }
+#if 0
+    //Fixed calibration parameter
+    ch1HVR=55384;
+    ch1HH=27126;
+    ch1HL=45865;
+    ch1LH=17543;
+    ch1LL=27226;
+    ch1LVR=50010;
+    RT1Ref=9.88*1000; 
+    t1offset=0.0;
+    const1=1000;
+
+    ch2HVR=42756;
+    ch2HH=21359;
+    ch2HL=35541;
+    ch2LH=14320;
+    ch2LL=21439;
+    ch2LVR=42783;
+    RT2Ref=9.87*1000;
+    t2offset=0.0;
+    const2=1000;
+
+    ch3HVR=43924;
+    ch3HH=21885;
+    ch3HL=36567;
+    ch3LH=14649;
+    ch3LL=21940;
+    ch3LVR=43824;
+    RT3Ref=9.88*1000;
+    t3offset=0.0;
+    const3=1000;
+
+    ch4HVR=43968;
+    ch4HH=21856;
+    ch4HL=36593;
+    ch4LH=14594;
+    ch4LL=21944;
+    ch4LVR=44047;
+    RT4Ref=9.87*1000;
+    t4offset=0.0;
+    const4=1000;
+
+    ch5HVR=43920;
+    ch5HH=21871;
+    ch5HL=36624;
+    ch5LH=14543;
+    ch5LL=21896;
+    ch5LVR=43986;
+    RT5Ref=9.85*1000;
+    t5offset=0.0;
+    const5=1000;
+#endif
 }
 
 

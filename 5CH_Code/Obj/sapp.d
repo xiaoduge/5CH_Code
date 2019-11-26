@@ -1,9 +1,9 @@
 .\obj\sapp.o: Source\APP\sapp.c
-.\obj\sapp.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+.\obj\sapp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\obj\sapp.o: .\Source\BSP\common.h
 .\obj\sapp.o: .\Source\CMSIS\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h
 .\obj\sapp.o: .\Source\CMSIS\CM3\CoreSupport\core_cm3.h
-.\obj\sapp.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\obj\sapp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\sapp.o: .\Source\CMSIS\CM3\DeviceSupport\ST\STM32F10x\system_stm32f10x.h
 .\obj\sapp.o: .\Source\APP\stm32f10x_conf.h
 .\obj\sapp.o: .\Source\FWLib\inc\stm32f10x_dma.h

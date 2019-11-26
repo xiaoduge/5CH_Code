@@ -3,11 +3,11 @@
 .\obj\modbus.o: .\Source\APP\app_cfg.h
 .\obj\modbus.o: .\Source\APP\os_cfg.h
 .\obj\modbus.o: .\Source\uCOS-II\Ports\os_cpu.h
-.\obj\modbus.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
-.\obj\modbus.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+.\obj\modbus.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\obj\modbus.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\obj\modbus.o: .\Source\CMSIS\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h
 .\obj\modbus.o: .\Source\CMSIS\CM3\CoreSupport\core_cm3.h
-.\obj\modbus.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\obj\modbus.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\modbus.o: .\Source\CMSIS\CM3\DeviceSupport\ST\STM32F10x\system_stm32f10x.h
 .\obj\modbus.o: .\Source\APP\stm32f10x_conf.h
 .\obj\modbus.o: .\Source\FWLib\inc\stm32f10x_dma.h
@@ -51,3 +51,4 @@
 .\obj\modbus.o: Source\APP\dica.h
 .\obj\modbus.o: Source\APP\Display.h
 .\obj\modbus.o: Source\APP\adc.h
+.\obj\modbus.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

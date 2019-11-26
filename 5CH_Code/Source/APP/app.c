@@ -249,6 +249,8 @@ void SecondTimer(void)
 
     Display_SecondTask();
 
+    ModbusSecondTask();
+
 }
 
 
@@ -431,9 +433,6 @@ UINT8 PidSelfProcess(Message *pMsg)
         MainInit();
         break;
     case SYSTEM_MSG_CODE_DELAY:
-        break;
-    case SELF_MSG_CODE_USER_AD7799:
-        Display_msg_Handler(pMsg);
         break;
     }
     return 0;

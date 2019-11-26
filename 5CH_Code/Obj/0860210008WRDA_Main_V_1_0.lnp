@@ -35,6 +35,6 @@
 ".\obj\system_stm32f10x.o"
 ".\lib\0862100000STM32F103.lib"
 --library_type=microlib --strict --scatter ".\Obj\0860210008WRDA_Main_V_1_0.sct"
---summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\Obj\0860210008WRDA_Main_V_1_0.map" -o .\Obj\0860210008WRDA_Main_V_1_0.axf

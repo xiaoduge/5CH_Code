@@ -53,6 +53,10 @@ typedef struct
 
     UINT16 usRcvIdleCnt;
 
+    /* 2018/12/12 add for rs485 deadlock check */
+    uint32_t ulRs485StartTick;
+    
+    uint8_t  ucRs485State;
 
     UINT8 ucDriverType; // SERIAL_DRIVER_TYPE_ENUM
 
@@ -68,6 +72,7 @@ typedef struct
     serail_data_cb      dcb;
 
     OS_EVENT  *mb;   // VALID When Driver by IPC
+
 }SERIAL_STRU;
 
 typedef struct
@@ -108,5 +113,6 @@ int Serial_GetDrvMode(UINT8 ucPort);
 int Serial_GetSndBufferSpace(UINT8 ucPort);
 void Serial_Purge(UINT8 ucPort);
 int Serial_Rcv_Empty(INT8U ucPort);
+void SerialTxCheck(UINT8 ucPort,uint32_t ulDuration);
 
 #endif
