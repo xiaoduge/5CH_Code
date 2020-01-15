@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Obj\0860210008WRDA_Main_V_1_0.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Obj\0860210008WRDA_Main_V_1_0.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Nov 18 10:49:43 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Jan 15 14:04:05 2020
 <BR><P>
 <H3>Maximum Stack Usage =        320 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1405,10 +1405,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MainInit
 </UL>
 
-<P><STRONG><a name="[137]"></a>get_trx</STRONG> (Thumb, 66 bytes, Stack size 8 bytes, modbus.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = get_trx
-</UL>
-<BR>[Called By]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_tx
+<P><STRONG><a name="[137]"></a>get_trx</STRONG> (Thumb, 66 bytes, Stack size 8 bytes, modbus.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_tx
 </UL>
 
 <P><STRONG><a name="[12e]"></a>ex_get_tx</STRONG> (Thumb, 118 bytes, Stack size 16 bytes, modbus.o(.text))
@@ -1430,15 +1428,12 @@ Global Symbols
 <LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ch5_meas_proc
 <LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ch4_meas_proc
 <LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ch3_meas_proc
+<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ch2_meas_proc
+<LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ch1_meas_proc
 </UL>
 
-<P><STRONG><a name="[136]"></a>get_tx</STRONG> (Thumb, 66 bytes, Stack size 4 bytes, modbus.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = get_tx &rArr; get_trx
-</UL>
-<BR>[Calls]<UL><LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_trx
-</UL>
-<BR>[Called By]<UL><LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ch2_meas_proc
-<LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ch1_meas_proc
+<P><STRONG><a name="[136]"></a>get_tx</STRONG> (Thumb, 66 bytes, Stack size 4 bytes, modbus.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_trx
 </UL>
 
 <P><STRONG><a name="[138]"></a>Delay1ms</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, modbus.o(.text), UNUSED)
@@ -1870,8 +1865,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[160]"></a>ch1_meas_proc</STRONG> (Thumb, 348 bytes, Stack size 40 bytes, modbus.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 184 + Unknown Stack Size
-<LI>Call Chain = ch1_meas_proc &rArr; get_c1addat &rArr; Display_ReadAdc &rArr; Display_SwitchChannel &rArr; Display_AD7799_Start &rArr; mAD7799_WriteRegEx &rArr; mAD7799_Write_Bytes_Helper
+<BR><BR>[Stack]<UL><LI>Max Depth = 264 + Unknown Stack Size
+<LI>Call Chain = ch1_meas_proc &rArr; ex_get_tx &rArr; log &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RelayLogicCtrl
 <LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
@@ -1886,12 +1881,12 @@ Global Symbols
 <LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRx_proc
 <LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_c1addat
 <LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tdelay
-<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_tx
+<LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ex_get_tx
 </UL>
 <BR>[Called By]<UL><LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Modbus_MsgHandler
 </UL>
 
-<P><STRONG><a name="[164]"></a>c2_puts</STRONG> (Thumb, 442 bytes, Stack size 16 bytes, modbus.o(.text))
+<P><STRONG><a name="[164]"></a>c2_puts</STRONG> (Thumb, 454 bytes, Stack size 16 bytes, modbus.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104 + Unknown Stack Size
 <LI>Call Chain = c2_puts &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
@@ -1910,8 +1905,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[165]"></a>ch2_meas_proc</STRONG> (Thumb, 346 bytes, Stack size 40 bytes, modbus.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 184 + Unknown Stack Size
-<LI>Call Chain = ch2_meas_proc &rArr; get_c2addat &rArr; Display_ReadAdc &rArr; Display_SwitchChannel &rArr; Display_AD7799_Start &rArr; mAD7799_WriteRegEx &rArr; mAD7799_Write_Bytes_Helper
+<BR><BR>[Stack]<UL><LI>Max Depth = 264 + Unknown Stack Size
+<LI>Call Chain = ch2_meas_proc &rArr; ex_get_tx &rArr; log &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RelayLogicCtrl
 <LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
@@ -1926,7 +1921,7 @@ Global Symbols
 <LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRx_proc
 <LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_c2addat
 <LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tdelay
-<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_tx
+<LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ex_get_tx
 </UL>
 <BR>[Called By]<UL><LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Modbus_MsgHandler
 </UL>
@@ -1949,7 +1944,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Modbus_MsgHandler
 </UL>
 
-<P><STRONG><a name="[167]"></a>ch3_meas_proc</STRONG> (Thumb, 382 bytes, Stack size 48 bytes, modbus.o(.text))
+<P><STRONG><a name="[167]"></a>ch3_meas_proc</STRONG> (Thumb, 362 bytes, Stack size 48 bytes, modbus.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 272 + Unknown Stack Size
 <LI>Call Chain = ch3_meas_proc &rArr; ex_get_tx &rArr; log &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
@@ -1973,7 +1968,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Modbus_MsgHandler
 </UL>
 
-<P><STRONG><a name="[169]"></a>c4_puts</STRONG> (Thumb, 292 bytes, Stack size 16 bytes, modbus.o(.text))
+<P><STRONG><a name="[169]"></a>c4_puts</STRONG> (Thumb, 288 bytes, Stack size 16 bytes, modbus.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104 + Unknown Stack Size
 <LI>Call Chain = c4_puts &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
@@ -1991,7 +1986,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Modbus_MsgHandler
 </UL>
 
-<P><STRONG><a name="[16a]"></a>ch4_meas_proc</STRONG> (Thumb, 380 bytes, Stack size 48 bytes, modbus.o(.text))
+<P><STRONG><a name="[16a]"></a>ch4_meas_proc</STRONG> (Thumb, 360 bytes, Stack size 48 bytes, modbus.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 272 + Unknown Stack Size
 <LI>Call Chain = ch4_meas_proc &rArr; ex_get_tx &rArr; log &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
@@ -2033,7 +2028,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Modbus_MsgHandler
 </UL>
 
-<P><STRONG><a name="[16c]"></a>ch5_meas_proc</STRONG> (Thumb, 390 bytes, Stack size 48 bytes, modbus.o(.text))
+<P><STRONG><a name="[16c]"></a>ch5_meas_proc</STRONG> (Thumb, 370 bytes, Stack size 48 bytes, modbus.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 272 + Unknown Stack Size
 <LI>Call Chain = ch5_meas_proc &rArr; ex_get_tx &rArr; log &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
@@ -2067,7 +2062,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Modbus_MsgHandler
 </UL>
 
-<P><STRONG><a name="[16e]"></a>ch1_debug_proc</STRONG> (Thumb, 370 bytes, Stack size 40 bytes, modbus.o(.text))
+<P><STRONG><a name="[16e]"></a>ch1_debug_proc</STRONG> (Thumb, 378 bytes, Stack size 40 bytes, modbus.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 264 + Unknown Stack Size
 <LI>Call Chain = ch1_debug_proc &rArr; ex_get_tx &rArr; log &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
@@ -2159,7 +2154,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Modbus_MsgHandler
 </UL>
 
-<P><STRONG><a name="[174]"></a>ch4_debug_proc</STRONG> (Thumb, 322 bytes, Stack size 40 bytes, modbus.o(.text))
+<P><STRONG><a name="[174]"></a>ch4_debug_proc</STRONG> (Thumb, 324 bytes, Stack size 40 bytes, modbus.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 264 + Unknown Stack Size
 <LI>Call Chain = ch4_debug_proc &rArr; ex_get_tx &rArr; log &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
@@ -2258,7 +2253,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_Cal
 </UL>
 
-<P><STRONG><a name="[17d]"></a>Send_Cal</STRONG> (Thumb, 708 bytes, Stack size 16 bytes, modbus.o(.text))
+<P><STRONG><a name="[17d]"></a>Send_Cal</STRONG> (Thumb, 712 bytes, Stack size 16 bytes, modbus.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72 + Unknown Stack Size
 <LI>Call Chain = Send_Cal &rArr; Tx_data &rArr; Modbus_FillSndBuf &rArr; Serial_FillSndBuf &rArr; SerialEnableTx &rArr; stm32_gpio_set_value
 </UL>

@@ -37,8 +37,8 @@ INT8U * const pParameter   =  (INT8U *)CONFIG_PARAMETER_PAGE;
 const char DataStr[]=__DATE__; 
 const char TimeStr[]=__TIME__; 
 
-//const char version[] = {"STM32F103_	WRDA_V1.0"};
-const char version[] = {"0.1.1.181217_93804"};
+//版本号对外未使用
+const char version[] = {"0.2.2.200115_93804"};
 
 const char dtype[]   = {"SHLF0710"};
 

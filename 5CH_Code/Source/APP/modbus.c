@@ -179,7 +179,7 @@ unsigned char RD_mode;
 //#define B3950
 
 
-#define SAFE
+//#define SAFE
 const float maxG25 = 18.2;
 const float safePar = 1.05;
 
@@ -709,20 +709,20 @@ uint8_t chk_CRC16(uint8_t start,uint8_t Bcnt)
 }
 
 /*
-µ÷ÊÔÈ·ÈÏ        C0  03  01  00  00  00  FC  54
-Ð£Õý²ÎÊý±¸·Ý    C0  03  02  00  00  00  B8  54
-Ð£Õý²ÎÊý»Ö¸´    C0  03  03  00  00  00  44  55
-ÔÚÏßISPÃüÁî     C0  03  04  00  00  00  30  54
-±£´æ²ÎÊýÃüÁî    C0  03  06  00  00  00  88  55
-Ð£Õý²ÎÊý¼ì²é    C0  03  07  00  00  00  74  54
-ASC MODBUSÇÐ»»  C0  03  08  00  00  00  60  57
-ASC MODBUSÇÐ»»  C0  03  09  00  00  00  9C  56
-Ö¸Áî²âÊÔ        C0  03  05  00  00  00  CC  55
-Ö¸Áî´íÎó        C0  83  01              CC  A0
+ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½        C0  03  01  00  00  00  FC  54
+Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½    C0  03  02  00  00  00  B8  54
+Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½    C0  03  03  00  00  00  44  55
+ï¿½ï¿½ï¿½ï¿½ISPï¿½ï¿½ï¿½ï¿½     C0  03  04  00  00  00  30  54
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½    C0  03  06  00  00  00  88  55
+Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½    C0  03  07  00  00  00  74  54
+ASC MODBUSï¿½Ð»ï¿½  C0  03  08  00  00  00  60  57
+ASC MODBUSï¿½Ð»ï¿½  C0  03  09  00  00  00  9C  56
+Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½        C0  03  05  00  00  00  CC  55
+Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½        C0  83  01              CC  A0
 
 History: 
-    ±£´æ²ÎÊýÃüÁî : save all calibrations to FLash ,add by ylf 
-    Ð£Õý²ÎÊý¼ì²é : make RDchk_flg complete by adding the command,add by ylf 2018/01/20
+    ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : save all calibrations to FLash ,add by ylf 
+    Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : make RDchk_flg complete by adding the command,add by ylf 2018/01/20
 */
 void get_c03_proc() 
 {
@@ -742,35 +742,35 @@ void get_c03_proc()
 }
 /*
 
-¸ßÁ¿³ÌVR    C1  02  80  81  00  02  38  91
-Ó¦´ð        C1  02  02×Ö½Ú  uint_H+uint_L               
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½VR    C1  02  80  81  00  02  38  91
+Ó¦ï¿½ï¿½        C1  02  02ï¿½Ö½ï¿½  uint_H+uint_L               
                                 
-¸ßÁ¿³Ì¸ßÏÞ  C1  02  82  83  00  02  40  31
-Ó¦´ð        C1  02  02×Ö½Ú  uint_H+uint_L               
+ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ï¿½ï¿½  C1  02  82  83  00  02  40  31
+Ó¦ï¿½ï¿½        C1  02  02ï¿½Ö½ï¿½  uint_H+uint_L               
                                 
-¸ßÁ¿³ÌµÍÏÞ  C1  02  84  85  00  02  C9  D1
-Ó¦´ð        C1  02  02×Ö½Ú  uint_H+uint_L               
+ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½  C1  02  84  85  00  02  C9  D1
+Ó¦ï¿½ï¿½        C1  02  02ï¿½Ö½ï¿½  uint_H+uint_L               
                                 
-µÍÁ¿³Ì¸ßÏÞ  C1  02  86  87  00  02  B1  71
-Ó¦´ð        C1  02  02×Ö½Ú  uint_H+uint_L               
+ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ï¿½ï¿½  C1  02  86  87  00  02  B1  71
+Ó¦ï¿½ï¿½        C1  02  02ï¿½Ö½ï¿½  uint_H+uint_L               
                                 
-µÍÁ¿³ÌµÍÏÞ  C1  02  88  89  00  02  9A  12
-Ó¦´ð        C1  02  02×Ö½Ú  uint_H+uint_L               
+ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½  C1  02  88  89  00  02  9A  12
+Ó¦ï¿½ï¿½        C1  02  02ï¿½Ö½ï¿½  uint_H+uint_L               
                                 
-µÍÁ¿³ÌVR    C1  02  8A  8B  00  02  E2  B2
-Ó¦´ð        C1  02  02×Ö½Ú  uint_H+uint_L               
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½VR    C1  02  8A  8B  00  02  E2  B2
+Ó¦ï¿½ï¿½        C1  02  02ï¿½Ö½ï¿½  uint_H+uint_L               
                                 
-ÎÂ¶È²ÉÑùµç×è±ê¶¨    C1  02  D0  D1  00  02  29  80
-Ó¦´ð                C1  02  02×Ö½Ú  uint_H+uint_L               
+ï¿½Â¶È²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê¶¨    C1  02  D0  D1  00  02  29  80
+Ó¦ï¿½ï¿½                C1  02  02ï¿½Ö½ï¿½  uint_H+uint_L               
                                 
-C1¶ÁÊý¾Ý                C1  02  00  03  00  06  13  19
-Ó¦´ðÊý¾Ý£¨float+int£©   C1  02  06×Ö½ÚÊý    EC3-EC0+T1T0                
+C1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                C1  02  00  03  00  06  13  19
+Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½float+intï¿½ï¿½   C1  02  06ï¿½Ö½ï¿½ï¿½ï¿½    EC3-EC0+T1T0                
                                 
-C1¶Á³£Êý    C1  02  8E  8F  00  02  13  F2
-Ó¦´ð        C1  02  02×Ö½ÚÊý    uint_H+uint_L               
+C1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½    C1  02  8E  8F  00  02  13  F2
+Ó¦ï¿½ï¿½        C1  02  02ï¿½Ö½ï¿½ï¿½ï¿½    uint_H+uint_L               
                                 
-C1¶ÁÎÂ¶ÈÆ«²î²¹³¥Öµ  C1  02  8C  8D  00  02  6B  52
-Ó¦´ð                C1  02  02×Ö½ÚÊý    int_H+int_L             
+C1ï¿½ï¿½ï¿½Â¶ï¿½Æ«ï¿½î²¹ï¿½ï¿½Öµ  C1  02  8C  8D  00  02  6B  52
+Ó¦ï¿½ï¿½                C1  02  02ï¿½Ö½ï¿½ï¿½ï¿½    int_H+int_L             
 
 */
 
@@ -861,13 +861,13 @@ void get_c12_proc()
 
 /*
 
-Ð´C1ÎÂ¶È²¹³¥Öµ  C1  03  8C  8D  int_H   int_L   6A  EE
-Ð´C1ÎÂ¶È²¹³¥Öµ  C1  03  8C  8D  int_H   int_L   DA  EF
-Ó¦´ð            C1  03  8C  8D  int_H   int_L       
+Ð´C1ï¿½Â¶È²ï¿½ï¿½ï¿½Öµ  C1  03  8C  8D  int_H   int_L   6A  EE
+Ð´C1ï¿½Â¶È²ï¿½ï¿½ï¿½Öµ  C1  03  8C  8D  int_H   int_L   DA  EF
+Ó¦ï¿½ï¿½            C1  03  8C  8D  int_H   int_L       
                                 
-Ð´C1µç¼«³£Êý    C1  03  8E  8F  uint_H  uint_L  AC  4E
-Ð´C1µç¼«³£Êý    C1  03  8E  8F  03  E7  A8  0E
-Ó¦´ð            C1  03  8E  8F  uint_H  uint_L      
+Ð´C1ï¿½ç¼«ï¿½ï¿½ï¿½ï¿½    C1  03  8E  8F  uint_H  uint_L  AC  4E
+Ð´C1ï¿½ç¼«ï¿½ï¿½ï¿½ï¿½    C1  03  8E  8F  03  E7  A8  0E
+Ó¦ï¿½ï¿½            C1  03  8E  8F  uint_H  uint_L      
 
 */
 void get_c13_proc() 
@@ -875,13 +875,13 @@ void get_c13_proc()
     uint16_t addr=cmd[2]*256+cmd[3];
     switch(addr)
     {
-    case 0x8c8d: /* set ÎÂ¶È²¹³¥Öµ */
+    case 0x8c8d: /* set ï¿½Â¶È²ï¿½ï¿½ï¿½Öµ */
         {
             t1offset=cmd[4]*256+cmd[5];
             work_mode=parameter_mode;       
             ent_flg=1;                                  
         }break;
-    case 0x8e8f: /* set µç¼«³£Êý */
+    case 0x8e8f: /* set ï¿½ç¼«ï¿½ï¿½ï¿½ï¿½ */
         {
             const1=cmd[4]*256+cmd[5];       
             work_mode=parameter_mode;       
@@ -892,35 +892,35 @@ void get_c13_proc()
 }
 
 /*
-¸ßÁ¿³ÌVR    C2  02  90  91  00  02  0E  94
-Ó¦´ð    C2  02  02×Ö½Ú  uint_H+uint_L               
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½VR    C2  02  90  91  00  02  0E  94
+Ó¦ï¿½ï¿½    C2  02  02ï¿½Ö½ï¿½  uint_H+uint_L               
                                 
-¸ßÁ¿³Ì¸ßÏÞ  C2  02  92  93  00  02  76  34
-Ó¦´ð    C2  02  02×Ö½Ú  uint_H+uint_L               
+ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ï¿½ï¿½  C2  02  92  93  00  02  76  34
+Ó¦ï¿½ï¿½    C2  02  02ï¿½Ö½ï¿½  uint_H+uint_L               
                                 
-¸ßÁ¿³Ìµ×ÏÞ  C2  02  94  95  00  02  FF  D4
-Ó¦´ð    C2  02  02×Ö½Ú  uint_H+uint_L               
+ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½  C2  02  94  95  00  02  FF  D4
+Ó¦ï¿½ï¿½    C2  02  02ï¿½Ö½ï¿½  uint_H+uint_L               
                                 
-µÍÁ¿³Ì¸ßÏÞ  C2  02  96  97  00  02  87  74
-Ó¦´ð    C2  02  02×Ö½Ú  uint_H+uint_L               
+ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ï¿½ï¿½  C2  02  96  97  00  02  87  74
+Ó¦ï¿½ï¿½    C2  02  02ï¿½Ö½ï¿½  uint_H+uint_L               
                                 
-µÍÁ¿³Ìµ×ÏÞ  C2  02  98  99  00  02  AC  17
-Ó¦´ð    C2  02  02×Ö½Ú  uint_H+uint_L               
+ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½  C2  02  98  99  00  02  AC  17
+Ó¦ï¿½ï¿½    C2  02  02ï¿½Ö½ï¿½  uint_H+uint_L               
                                 
-µÍÁ¿³ÌVR±ê¶¨    C2  02  9A  9B  00  02  D4  B7
-Ó¦´ð    C2  02  02×Ö½Ú  uint_H+uint_L               
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½VRï¿½ê¶¨    C2  02  9A  9B  00  02  D4  B7
+Ó¦ï¿½ï¿½    C2  02  02ï¿½Ö½ï¿½  uint_H+uint_L               
                                 
-ÎÂ¶È²ÉÑùµç×è±ê¶¨    C2  02  D2  D3  00  02  62  20
-Ó¦´ð    C2  02  02×Ö½Ú  uint_H+uint_L               
+ï¿½Â¶È²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê¶¨    C2  02  D2  D3  00  02  62  20
+Ó¦ï¿½ï¿½    C2  02  02ï¿½Ö½ï¿½  uint_H+uint_L               
                                 
-C2¶ÁÊý¾Ý    C2  02  00  0E  00  06  E3  88
-Ó¦´ðÊý¾Ý£¨float+int£©   C2  02  06×Ö½ÚÊý    EC3-EC0+T1T0                
+C2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½    C2  02  00  0E  00  06  E3  88
+Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½float+intï¿½ï¿½   C2  02  06ï¿½Ö½ï¿½ï¿½ï¿½    EC3-EC0+T1T0                
                                 
-C2¶Á³£Êý    C2  02  9E  9F  00  02  25  F7
-Ó¦´ð    C2  02  02×Ö½ÚÊý    uint_H+uint_L               
+C2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½    C2  02  9E  9F  00  02  25  F7
+Ó¦ï¿½ï¿½    C2  02  02ï¿½Ö½ï¿½ï¿½ï¿½    uint_H+uint_L               
                                 
-C2¶ÁÎÂ¶ÈÆ«²î²¹³¥Öµ  C2  02  9C  9D  00  02  5D  57
-Ó¦´ð    C2  02  02×Ö½ÚÊý    int_H+int_L             
+C2ï¿½ï¿½ï¿½Â¶ï¿½Æ«ï¿½î²¹ï¿½ï¿½Öµ  C2  02  9C  9D  00  02  5D  57
+Ó¦ï¿½ï¿½    C2  02  02ï¿½Ö½ï¿½ï¿½ï¿½    int_H+int_L             
 
 */
 void get_c22_proc() 
@@ -1007,13 +1007,13 @@ void get_c22_proc()
 
 /*
 
-Ð´C2ÎÂ¶È²¹³¥Öµ  C1  03  8C  8D  int_H   int_L   6A  EE
-Ð´C2ÎÂ¶È²¹³¥Öµ  C1  03  8C  8D  int_H   int_L   DA  EF
-Ó¦´ð            C1  03  8C  8D  int_H   int_L       
+Ð´C2ï¿½Â¶È²ï¿½ï¿½ï¿½Öµ  C1  03  8C  8D  int_H   int_L   6A  EE
+Ð´C2ï¿½Â¶È²ï¿½ï¿½ï¿½Öµ  C1  03  8C  8D  int_H   int_L   DA  EF
+Ó¦ï¿½ï¿½            C1  03  8C  8D  int_H   int_L       
                                 
-Ð´C2µç¼«³£Êý    C1  03  8E  8F  uint_H  uint_L  AC  4E
-Ð´C2µç¼«³£Êý    C1  03  8E  8F  03  E7  A8  0E
-Ó¦´ð            C1  03  8E  8F  uint_H  uint_L      
+Ð´C2ï¿½ç¼«ï¿½ï¿½ï¿½ï¿½    C1  03  8E  8F  uint_H  uint_L  AC  4E
+Ð´C2ï¿½ç¼«ï¿½ï¿½ï¿½ï¿½    C1  03  8E  8F  03  E7  A8  0E
+Ó¦ï¿½ï¿½            C1  03  8E  8F  uint_H  uint_L      
 
 */
 void get_c23_proc()     
@@ -1530,13 +1530,13 @@ void c1_puts()
         {
             tmp=(uint16_t)((G25x1+0.05)*10);
             tobcd_puts(tmp,3);
-            Uart1s_Send("¦ÌS/cm ");
+            Uart1s_Send("ï¿½ï¿½S/cm ");
         }
         else if(G25x1<2000)
         {
             tmp=(uint16_t)(G25x1+0.5);
             tobcd_puts(tmp,0);
-            Uart1s_Send("¦ÌS/cm ");
+            Uart1s_Send("ï¿½ï¿½S/cm ");
         }
         else
         {
@@ -1546,7 +1546,7 @@ void c1_puts()
         }
         Uart1s_Send("T1=");
         txtobcd_puts(tx1);
-        Uart1s_Send("¡æ");
+        Uart1s_Send("ï¿½ï¿½");
         Send_Enter();
     }
     else
@@ -1579,8 +1579,8 @@ void ch1_meas_proc()
     uint16_t Rx;
     t1addat=ad_mean(T1_ch); /* ylf: internal adc (from calibrating procedure ch1HL > ch1HH )*/
     c1addat=get_c1addat();  /* ylf: external adc */
-    // tx1= ex_get_tx(t1addat,RT1Ref) + t1offset;
-    tx1=get_tx(t1addat,RT1Ref)+t1offset; /* ylf: tx1 is one member of ch1_data_addr */
+    tx1= ex_get_tx(t1addat,RT1Ref) + t1offset;
+    //tx1=get_tx(t1addat,RT1Ref)+t1offset; /* ylf: tx1 is one member of ch1_data_addr */
     
     if(ch1_Range_flg)
     {
@@ -1618,23 +1618,23 @@ void c2_puts()
         {
             tmp=(uint16_t)((G25x2+0.0005)*1000);
             tobcd_puts(tmp,1);
-            Uart1s_Send("¦ÌS/cm  ");
+            Uart1s_Send("ï¿½ï¿½S/cm  ");
         }
         else if(G25x2<20)
         {
             tmp=(uint16_t)((G25x2+0.005)*100);
             tobcd_puts(tmp,2);
-            Uart1s_Send("¦ÌS/cm ");
+            Uart1s_Send("ï¿½ï¿½S/cm ");
         }
         else
         {
             tmp=(uint16_t)((G25x2+0.05)*10);
             tobcd_puts(tmp,3);
-            Uart1s_Send("¦ÌS/cm ");
+            Uart1s_Send("ï¿½ï¿½S/cm ");
         }
         Uart1s_Send("T2=");
         txtobcd_puts(tx2);
-        Uart1s_Send("¡æ");
+        Uart1s_Send("ï¿½ï¿½");
         Send_Enter();
     }
     else
@@ -1667,8 +1667,8 @@ void ch2_meas_proc()
     uint16_t Rx;
     t2addat=ad_mean(T2_ch);
     c2addat=get_c2addat();  
-    // tx2= ex_get_tx(t2addat,RT2Ref) + t2offset;
-    tx2=get_tx(t2addat,RT2Ref)+t2offset;        
+    tx2= ex_get_tx(t2addat,RT2Ref) + t2offset;
+    //tx2=get_tx(t2addat,RT2Ref)+t2offset;        
 
     if(ch2_Range_flg)                                                   
     {
@@ -1712,10 +1712,10 @@ void c3_puts()
             tmp=(uint16_t)((R25x3+0.005)*100);
             tobcd_puts(tmp,2);
         }
-        Uart1s_Send("M¦¸*cm ");
+        Uart1s_Send("Mï¿½ï¿½*cm ");
         Uart1s_Send("T3=");
         txtobcd_puts(tx3);
-        Uart1s_Send("¡æ");
+        Uart1s_Send("ï¿½ï¿½");
         Send_Enter();
     }
     else
@@ -1801,10 +1801,10 @@ void c4_puts()
             tmp=(uint16_t)((R25x4+0.005)*100);
             tobcd_puts(tmp,2);
         }
-        Uart1s_Send("M¦¸*cm ");
+        Uart1s_Send("Mï¿½ï¿½*cm ");
         Uart1s_Send("T4=");
         txtobcd_puts(tx4);
-        Uart1s_Send("¡æ");
+        Uart1s_Send("ï¿½ï¿½");
         Send_Enter();
     }
     else
@@ -1889,10 +1889,10 @@ void c5_puts()
             tmp=(uint16_t)((R25x5+0.005)*100);
             tobcd_puts(tmp,2);
         }
-        Uart1s_Send("M¦¸*cm  ");
+        Uart1s_Send("Mï¿½ï¿½*cm  ");
         Uart1s_Send("T5=");
         txtobcd_puts(tx5);
-        Uart1s_Send("¡æ");
+        Uart1s_Send("ï¿½ï¿½");
         Send_Enter();
     }
     else
@@ -2795,7 +2795,7 @@ void ModbusInit(void)
    ES = 0;
 
 #if 0
-	//20180522ÐÞ¸Ä£¬½â¾ö10±¶´íÎóÎÊÌâ1--->0
+	//20180522ï¿½Þ¸Ä£ï¿½ï¿½ï¿½ï¿½10ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1--->0
    ch1_Range_flg=0;
    ch2_Range_flg=0;
    ch3_Range_flg=0;
