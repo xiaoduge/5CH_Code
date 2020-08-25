@@ -1579,7 +1579,9 @@ void ch1_meas_proc()
     uint16_t Rx;
     t1addat=ad_mean(T1_ch); /* ylf: internal adc (from calibrating procedure ch1HL > ch1HH )*/
     c1addat=get_c1addat();  /* ylf: external adc */
-    tx1= ex_get_tx(t1addat,RT1Ref) + t1offset;
+   // tx1= ex_get_tx(t1addat,RT1Ref) + t1offset;
+	tx2= ex_get_tx(t2addat,RT2Ref) + t2offset;
+	tx1 = tx2;
     //tx1=get_tx(t1addat,RT1Ref)+t1offset; /* ylf: tx1 is one member of ch1_data_addr */
     
     if(ch1_Range_flg)

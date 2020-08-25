@@ -38,7 +38,7 @@ const char DataStr[]=__DATE__;
 const char TimeStr[]=__TIME__; 
 
 //版本号对外未使用
-const char version[] = {"0.2.2.200115_93804"};
+const char version[] = {"0.2.2.200825_93804"};
 
 const char dtype[]   = {"SHLF0710"};
 
