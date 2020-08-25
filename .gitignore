@@ -59,3 +59,5 @@ dkms.conf
 
 # 忽略备份文件夹
 baseos_Code_old
+
+*.xiaoduge
